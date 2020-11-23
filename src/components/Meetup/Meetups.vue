@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
         <v-card class="info">
           <v-container fluid>
             <v-layout row>
@@ -15,6 +15,12 @@
                     <div>17th July 2017</div>
                   </div>
                 </v-card-title>
+                <v-card-actions>
+                  <v-btn flat to="/mettups/1">
+                    <v-icon>arrow_forward</v-icon>
+                    View Meetup
+                  </v-btn>
+                </v-card-actions>
               </v-flex>
             </v-layout>
           </v-container>
