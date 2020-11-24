@@ -29,12 +29,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      meetups: [
-        {imageUrl: '', id: '12312435345', title: 'Meetup in New York'},
-        {imageUrl: '', id: '23423444343', title: 'Meetup in Paris'},
-      ]
+  computed: {
+    meetups() {
+      return this.$store.getters.featuredMeetups;
     }
   },
   methods: {
