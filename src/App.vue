@@ -36,22 +36,11 @@ export default {
   data() {
     return {
       sideNav: false,
-      menuItems: [
-        {
-          icon: 'mdi-account-supervisor',
-          title: 'View Meetups',
-          link: '/meetups',
-        },
-        {
-          icon: 'mdi-room',
-          title: 'Organize Meetups',
-          link: '/createMeetup',
-        },
-        {
-          icon: 'mdi-person',
-          title: 'Profile',
-          link: '/profile',
-        },
+    }
+  },
+  computed: {
+    menuItems() {
+      let menuItems =  [
         {
           icon: 'mdi-face',
           title: 'Sign up',
@@ -62,10 +51,34 @@ export default {
           title: 'Sign in',
           link: '/signup',
         },
-      ]
+      ];
+
+      if(this.userIsAuthenticated) {
+        menuItems = [
+          {
+            icon: 'mdi-account-supervisor',
+            title: 'View Meetups',
+            link: '/meetups',
+          },
+          {
+            icon: 'mdi-room',
+            title: 'Organize Meetups',
+            link: '/createMeetup',
+          },
+          {
+            icon: 'mdi-person',
+            title: 'Profile',
+            link: '/profile',
+          },
+        ]
+      }
+
+      return menuItems;
+    },
+    userIsAuthenticated() {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined;
     }
-      
-  }
+  },
 }
 </script>
 
