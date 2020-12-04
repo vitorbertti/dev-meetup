@@ -5,10 +5,12 @@ import router from '@/router/router';
 import { store } from './store';
 import DateFilter from './filters/date';
 import * as firebase from 'firebase';
+import AlertCmp from './components/shared/Alert.vue'
 
 Vue.config.productionTip = false;
 
 Vue.filter('date', DateFilter);
+Vue.component('app-alert', AlertCmp);
 
 const config = {
   apiKey: process.env.VUE_APP_APIKEY,
