@@ -38,6 +38,9 @@ export default {
       sideNav: false,
     }
   },
+  mounted() {
+    this.$store.dispatch('loadMeetups');
+  },
   computed: {
     menuItems() {
       let menuItems =  [
