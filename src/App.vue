@@ -8,6 +8,12 @@
           </v-list-item-action>
           <v-list-item-content>{{ item.title }}</v-list-item-content>
         </v-list-item>
+        <v-list-item v-if="userIsAuthenticated" @click="onLogout">
+          <v-list-item-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>Logout</v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark class="primary">
@@ -21,6 +27,10 @@
           <v-icon left dark>{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
+        <v-btn text v-if="userIsAuthenticated" @click="onLogout">
+          <v-icon left dark>exit_to_app</v-icon>
+          Logout
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <main>
@@ -31,6 +41,7 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+import * as firebase from 'firebase';
 
 export default {
   data() {
@@ -39,6 +50,11 @@ export default {
     }
   },
   mounted() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.$store.dispatch('autoSignIn', user);
+      }
+    })
     this.$store.dispatch('loadMeetups');
   },
   computed: {
@@ -82,6 +98,11 @@ export default {
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined;
     }
   },
+  methods: {
+    onLogout() {
+      this.$store.dispatch('logout');
+    }
+  }
 }
 </script>
 
