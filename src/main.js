@@ -9,6 +9,7 @@ import AlertCmp from './components/shared/Alert.vue';
 import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog.vue';
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog.vue';
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog.vue';
+import RegisterDialog from './components/Meetup/Registration/RegisterDialog.vue';
 
 Vue.config.productionTip = false;
 
@@ -17,6 +18,7 @@ Vue.component('app-alert', AlertCmp);
 Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog);
 Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog);
 Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog);
+Vue.component('app-meetup-register-dialog', RegisterDialog);
 
 const config = {
   apiKey: process.env.VUE_APP_APIKEY,
