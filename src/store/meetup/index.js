@@ -1,17 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
 import * as firebase from 'firebase';
 
-Vue.use(Vuex);
-
-export const store = new Vuex.Store({
+export default {
    state: {
       loadedMeetups: [
          {imageUrl: '', id: '12312435345', title: 'Meetup in New York', date: new Date(), location: 'New York', description: 'New York'},
          {imageUrl: '', id: '23423444343', title: 'Meetup in Paris', date: new Date(), location: 'Paris', description: 'Its Paris'},
       ],
-      loading: false,
-      error: null,
    },
    mutations: {
       createMeetup(state, payload) {
@@ -28,15 +22,6 @@ export const store = new Vuex.Store({
          if(payload.date) {
             meetup.date = payload.date;
          }
-      },
-      setLoading(state, payload) {
-         state.loading = payload;
-      },
-      setError(state, payload) {
-         state.error = payload;
-      },
-      clearError(state) {
-         state.error = null;
       },
       setLoadedMeetups(state, payload) {
          state.loadedMeetups = payload;
@@ -114,9 +99,6 @@ export const store = new Vuex.Store({
             commit('setLoading', false);
          })
       },
-      clearError({ commit }) {
-         commit('clearError');
-      }
    },
    getters: {
       loadedMeetups(state) {
@@ -134,11 +116,5 @@ export const store = new Vuex.Store({
             })
          })
       },
-      loading(state) {
-         return state.loading;
-      },
-      error(state) {
-         return state.error;
-      },
    },
-})
+}
